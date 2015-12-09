@@ -2,6 +2,18 @@ package com.yourblogz.busstop;
 
 public class Busstop {
     /**
+     * 城市代号
+     */
+    private int cityCode;
+    /**
+     * 公交车名称
+     */
+    private String busName;
+    /**
+     * 搜索关键字
+     */
+    private String searchKeyword;
+    /**
      * 公交车所属公司
      */
     private String companyName;
@@ -30,6 +42,24 @@ public class Busstop {
      */
     private String lat;
     
+    public String getSearchKeyword() {
+        return searchKeyword;
+    }
+    public void setSearchKeyword(String searchKeyword) {
+        this.searchKeyword = searchKeyword;
+    }
+    public int getCityCode() {
+        return cityCode;
+    }
+    public void setCityCode(int cityCode) {
+        this.cityCode = cityCode;
+    }
+    public String getBusName() {
+        return busName;
+    }
+    public void setBusName(String busName) {
+        this.busName = busName;
+    }
     public String getCompanyName() {
         return companyName;
     }

@@ -3,6 +3,7 @@ package com.yourblogz.busstop;
 import java.net.URLEncoder;
 
 import org.apache.commons.collections4.CollectionUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.slf4j.Logger;
@@ -38,8 +39,11 @@ public class BusstopLocationGenerator {
             if (CollectionUtils.isNotEmpty(result)) {
                 for (int i = 0; i < result.size(); i++) {
                     JSONObject row = result.getJSONObject(i);
-                    if (stationName.equals(row.getString("name") + "") && row.getIntValue("catalogID") == Consts.CATALOG_BUSSTOP) {
-                        busstop.setPassBusses(row.getString("addr"));
+                    String addr = row.getString("addr");
+                    
+                    if ((stationName.equals(row.getString("name") + "") && row.getIntValue("catalogID") == Consts.CATALOG_BUSSTOP)
+                        || (row.getIntValue("catalogID") == Consts.CATALOG_BUSSTOP && StringUtils.isNotBlank(addr) && addr.contains(busstop.getBusName()))) {
+                        busstop.setPassBusses(addr);
                         busstop.setLng(ToolKit.longToLocation(row.getLongValue("x"), 2));
                         busstop.setLat(ToolKit.longToLocation(row.getLongValue("y"), 2));
                         break;

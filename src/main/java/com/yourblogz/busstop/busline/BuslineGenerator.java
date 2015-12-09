@@ -1,5 +1,8 @@
 package com.yourblogz.busstop.busline;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.jsoup.Jsoup;
@@ -76,20 +79,26 @@ public abstract class BuslineGenerator {
                             JSONArray stations = busline.getJSONArray("stations");
                             for (int k = 0; k < stations.size(); k++) {
                                 Busstop busstop = new Busstop();
+                                busstop.setBusName(busName);
+                                busstop.setCityCode(cityCode);
                                 busstop.setBusstopNum(String.valueOf(k + 1));
                                 busstop.setBusstopName(((JSONObject)stations.get(k)).get("name").toString());
                                 busstop.setCompanyName(busline.getString("company"));
                                 busstop.setBuslineName(busline.getString("name").trim());
-                                int nullTimes = 0;
-                                String searchStr = String.format("%s %s-公交站", Consts.CITY_MAP.get(CityCode.C119), busstop.getBusstopName());
-                                while (true && nullTimes < 2) {
-                                    nullTimes++;
-                                    new BusstopLocationGenerator(cityCode, busstop.getBusstopName(), searchStr).generate(busstop);
-                                    if (StringUtils.isBlank(busstop.getLng())) {
-                                        searchStr = String.format("%s-公交站", busstop.getBusstopName());
-                                        continue;
+                                
+                                List<String> searchList = new ArrayList<>();
+                                searchList.add(String.format("%s-公交站", busstop.getBusstopName()));
+                                searchList.add(String.format("%s %s-公交站", Consts.CITY_MAP.get(CityCode.C119), busstop.getBusstopName()));
+                                searchList.add(String.format("%s %s %s-公交站", Consts.CITY_MAP.get(CityCode.C119), busName, busstop.getBusstopName()));
+                                
+                                String searchKeyword = "";
+                                while (searchList.size() != 0 && StringUtils.isNotBlank(searchKeyword = searchList.remove(0))) {
+                                    new BusstopLocationGenerator(cityCode, busstop.getBusstopName(), searchKeyword).generate(busstop);
+                                    if (StringUtils.isNotBlank(busstop.getLng())) {
+                                        break;
                                     }
                                 }
+                                busstop.setSearchKeyword(searchKeyword);
                                 output(busstop);
                             }
                         }
