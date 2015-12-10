@@ -15,7 +15,6 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.yourblogz.busstop.Busstop;
 import com.yourblogz.busstop.BusstopLocationGenerator;
-import com.yourblogz.busstop.consts.CityCode;
 import com.yourblogz.busstop.consts.Consts;
 
 /**
