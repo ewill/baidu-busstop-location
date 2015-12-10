@@ -89,8 +89,8 @@ public abstract class BuslineGenerator {
                                 
                                 List<String> searchList = new ArrayList<>();
                                 searchList.add(String.format("%s-公交站", busstop.getBusstopName()));
-                                searchList.add(String.format("%s %s-公交站", Consts.CITY_MAP.get(CityCode.C119), busstop.getBusstopName()));
-                                searchList.add(String.format("%s %s %s-公交站", Consts.CITY_MAP.get(CityCode.C119), busName, busstop.getBusstopName()));
+                                searchList.add(String.format("%s %s-公交站", Consts.CITY_MAP.get(cityCode), busstop.getBusstopName()));
+                                searchList.add(String.format("%s %s %s-公交站", Consts.CITY_MAP.get(cityCode), busName, busstop.getBusstopName()));
                                 searchList.add(String.format("%s%s-公交站", busName, busstop.getBusstopName()));
                                 
                                 String searchKeyword = "";
