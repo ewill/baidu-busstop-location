@@ -94,7 +94,7 @@ public abstract class BuslineGenerator {
                                 
                                 String searchKeyword = "";
                                 while (searchList.size() != 0 && StringUtils.isNotBlank(searchKeyword = searchList.remove(0))) {
-                                    new BusstopLocationGenerator(cityCode, busstop.getBusstopName(), searchKeyword).generate(busstop);
+                                    new BusstopLocationGenerator(cityCode, busstop.getBusstopName(), searchKeyword).setConnectionTimeout(connectTimeout).generate(busstop);
                                     if (StringUtils.isNotBlank(busstop.getLng())) {
                                         break;
                                     }

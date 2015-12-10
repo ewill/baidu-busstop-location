@@ -59,8 +59,9 @@ public class BusstopLocationGenerator {
         return connectionTimeout;
     }
 
-    public void setConnectionTimeout(int connectionTimeout) {
+    public BusstopLocationGenerator setConnectionTimeout(int connectionTimeout) {
         this.connectionTimeout = connectionTimeout;
+        return this;
     }
 
     public int getCityCode() {
