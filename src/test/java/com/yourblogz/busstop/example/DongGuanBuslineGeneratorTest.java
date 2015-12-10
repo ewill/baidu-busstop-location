@@ -8,7 +8,7 @@ public class DongGuanBuslineGeneratorTest extends TestCase {
 
     @Test
     public void testStart() {
-        DongGuanBuslineGenerator generator = new DongGuanBuslineGenerator("c3");
+        DongGuanBuslineGenerator generator = new DongGuanBuslineGenerator("622");
         generator.setConnectTimeout(10000).start();
     }
 }

@@ -19,8 +19,8 @@ import com.yourblogz.busstop.consts.CityCode;
 import com.yourblogz.busstop.consts.Consts;
 
 /**
- * 根据城市代码和公交车名称获取线路列表
- * 如果输入的公交车名称不具体，则可能获取多条线路列表
+ * <p>根据城市代码和公交车名称获取线路列表</p>
+ * <p>如果输入的公交车名称不具体，则可能获取多条线路列表</p>
  */
 public abstract class BuslineGenerator {
     
@@ -56,6 +56,7 @@ public abstract class BuslineGenerator {
     }
     
     public void start() {
+        if (busNames == null || busNames.length == 0) return;
         for (String busName : busNames) {
             try {
                 Document doc = Jsoup.connect(String.format(Consts.BUSSTOP_UID_REQUEST_URL, cityCode, busName))
