@@ -10,6 +10,14 @@ public class Busstop {
      */
     private String busName;
     /**
+     * 班次开车时间
+     */
+    private String startTime;
+    /**
+     * 班次落班时间
+     */
+    private String endTime;
+    /**
      * 公交车所属公司
      */
     private String companyName;
@@ -38,6 +46,18 @@ public class Busstop {
      */
     private String lat;
     
+    public String getStartTime() {
+        return startTime;
+    }
+    public void setStartTime(String startTime) {
+        this.startTime = startTime;
+    }
+    public String getEndTime() {
+        return endTime;
+    }
+    public void setEndTime(String endTime) {
+        this.endTime = endTime;
+    }
     public int getCityCode() {
         return cityCode;
     }

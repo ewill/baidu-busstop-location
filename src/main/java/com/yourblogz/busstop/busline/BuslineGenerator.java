@@ -78,6 +78,8 @@ public abstract class BuslineGenerator {
                                 Busstop busstop = new Busstop();
                                 busstop.setBusName(busName);
                                 busstop.setCityCode(cityCode);
+                                busstop.setStartTime(busline.getString("startTime"));
+                                busstop.setEndTime(busline.getString("endTime"));
                                 busstop.setBusstopNum(String.valueOf(k + 1));
                                 busstop.setBusstopName(station.get("name").toString());
                                 busstop.setCompanyName(busline.getString("company"));

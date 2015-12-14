@@ -21,10 +21,12 @@ public class DongGuanBuslineGenerator extends BuslineGenerator {
 
     @Override
     protected void output(Busstop busstop) {
-        log.info(String.format("\n站序：%s\n城市代号：%d\n公交车名称：%s\n所属公司：%s\n线路编号：%s\n公交车站名称：%s\n途经公交车：%s\n墨卡x：%s,墨卡y：%s\n%s\n",
+        log.info(String.format("\n站序：%s\n城市代号：%d\n公交车名称：%s (%s - %s)\n所属公司：%s\n线路编号：%s\n公交车站名称：%s\n途经公交车：%s\n墨卡x：%s,墨卡y：%s\n%s\n",
                 busstop.getBusstopNum(),
                 busstop.getCityCode(),
                 busstop.getBusName(),
+                busstop.getStartTime(),
+                busstop.getEndTime(),
                 busstop.getCompanyName(),
                 busstop.getBuslineName(),
                 busstop.getBusstopName(),
