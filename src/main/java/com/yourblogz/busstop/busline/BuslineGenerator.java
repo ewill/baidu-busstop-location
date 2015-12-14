@@ -1,10 +1,6 @@
 package com.yourblogz.busstop.busline;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.apache.commons.collections4.CollectionUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.slf4j.Logger;
@@ -78,28 +74,15 @@ public abstract class BuslineGenerator {
                             JSONObject busline = buslines.getJSONObject(0);
                             JSONArray stations = busline.getJSONArray("stations");
                             for (int k = 0; k < stations.size(); k++) {
+                                JSONObject station = stations.getJSONObject(k);
                                 Busstop busstop = new Busstop();
                                 busstop.setBusName(busName);
                                 busstop.setCityCode(cityCode);
                                 busstop.setBusstopNum(String.valueOf(k + 1));
-                                busstop.setBusstopName(((JSONObject)stations.get(k)).get("name").toString());
+                                busstop.setBusstopName(station.get("name").toString());
                                 busstop.setCompanyName(busline.getString("company"));
                                 busstop.setBuslineName(busline.getString("name").trim());
-                                
-                                List<String> searchList = new ArrayList<>();
-                                searchList.add(String.format("%s-公交站", busstop.getBusstopName()));
-                                searchList.add(String.format("%s %s-公交站", Consts.CITY_MAP.get(cityCode), busstop.getBusstopName()));
-                                searchList.add(String.format("%s %s %s-公交站", Consts.CITY_MAP.get(cityCode), busName, busstop.getBusstopName()));
-                                searchList.add(String.format("%s%s-公交站", busName, busstop.getBusstopName()));
-                                
-                                String searchKeyword = "";
-                                while (searchList.size() != 0 && StringUtils.isNotBlank(searchKeyword = searchList.remove(0))) {
-                                    new BusstopLocationGenerator(cityCode, busstop.getBusstopName(), searchKeyword).setConnectionTimeout(connectTimeout).generate(busstop);
-                                    if (StringUtils.isNotBlank(busstop.getLng())) {
-                                        break;
-                                    }
-                                }
-                                busstop.setSearchKeyword(searchKeyword);
+                                new BusstopLocationGenerator(station.get("uid").toString()).setConnectTimeout(connectTimeout).generate(busstop);
                                 output(busstop);
                             }
                         }

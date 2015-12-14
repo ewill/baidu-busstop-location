@@ -16,11 +16,7 @@ public interface Consts {
     /**
      * 获取公交站信息位置请求
      */
-    static String BUSSTOP_LOCATION_REQUEST_URL = "http://api.map.baidu.com/?qt=s&c=%d&wd=%s&rn=10&ie=utf-8&oue=1&res=api";
-    /**
-     * 类型代号：公交车站主点
-     */
-    static int CATALOG_BUSSTOP = 524;
+    static String BUSSTOP_LOCATION_REQUEST_URL = "http://map.baidu.com/?qt=inf&uid=%s&ie=utf-8";
     
     @SuppressWarnings("serial")
     static Map<Integer, String> CITY_MAP = Collections.unmodifiableMap(new HashMap<Integer, String>(){{

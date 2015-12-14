@@ -10,10 +10,6 @@ public class Busstop {
      */
     private String busName;
     /**
-     * 搜索关键字
-     */
-    private String searchKeyword;
-    /**
      * 公交车所属公司
      */
     private String companyName;
@@ -42,12 +38,6 @@ public class Busstop {
      */
     private String lat;
     
-    public String getSearchKeyword() {
-        return searchKeyword;
-    }
-    public void setSearchKeyword(String searchKeyword) {
-        this.searchKeyword = searchKeyword;
-    }
     public int getCityCode() {
         return cityCode;
     }

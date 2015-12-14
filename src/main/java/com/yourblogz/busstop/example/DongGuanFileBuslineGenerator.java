@@ -17,9 +17,8 @@ public class DongGuanFileBuslineGenerator extends FileBuslineGenerator {
 
     @Override
     protected void output(Busstop busstop) {
-        log.info(String.format("\n站序：%s\n搜索关键字：%s\n城市代号：%d\n公交车名称：%s\n所属公司：%s\n线路编号：%s\n公交车站名称：%s\n途经公交车：%s\n墨卡x：%s,墨卡y：%s\n%s\n",
+        log.info(String.format("\n站序：%s\n城市代号：%d\n公交车名称：%s\n所属公司：%s\n线路编号：%s\n公交车站名称：%s\n途经公交车：%s\n墨卡x：%s,墨卡y：%s\n%s\n",
                 busstop.getBusstopNum(),
-                busstop.getSearchKeyword(),
                 busstop.getCityCode(),
                 busstop.getBusName(),
                 busstop.getCompanyName(),
