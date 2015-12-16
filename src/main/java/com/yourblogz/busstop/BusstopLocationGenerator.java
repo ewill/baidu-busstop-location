@@ -1,6 +1,7 @@
 package com.yourblogz.busstop;
 
 import org.jsoup.Jsoup;
+
 import org.jsoup.nodes.Document;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,6 +10,9 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.yourblogz.busstop.consts.Consts;
 
+/**
+ * <p>根据公交站点的UID获取坐标</p>
+ */
 public class BusstopLocationGenerator {
     
     private final String uid;
